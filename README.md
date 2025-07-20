@@ -130,7 +130,7 @@ CyberPH-Encyptor-Decryptor/
 
 ### Building from Source
 ```bash
-git clone <repository>
+git clone https://github.com/TadashiJei/CyberPH-Chef
 cd CyberPH-Encyptor-Decryptor
 pip install -r requirements.txt
 python main.py
