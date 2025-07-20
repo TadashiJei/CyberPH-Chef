@@ -100,15 +100,15 @@ class CyberPHEncryptor:
         key_frame = tk.Frame(main_frame, bg='#2c3e50')
         key_frame.pack(fill='x', pady=10)
         
-        generate_key_btn = ttk.Button(key_frame, text="🔑 Generate Key", 
+        generate_key_btn = ttk.Button(key_frame, text="Generate Key", 
                                     command=self.generate_key, style='Custom.TButton')
         generate_key_btn.pack(side='left', padx=(0, 5))
         
-        import_key_btn = ttk.Button(key_frame, text="📁 Import Key", 
+        import_key_btn = ttk.Button(key_frame, text="Import Key", 
                                   command=self.import_key, style='Custom.TButton')
         import_key_btn.pack(side='left', padx=(5, 5))
         
-        export_key_btn = ttk.Button(key_frame, text="💾 Export Key", 
+        export_key_btn = ttk.Button(key_frame, text="Export Key", 
                                   command=self.export_key, style='Custom.TButton')
         export_key_btn.pack(side='left', padx=(5, 0))
         
@@ -121,12 +121,12 @@ class CyberPHEncryptor:
         # Operation buttons frame
         operation_frame = tk.Frame(main_frame, bg='#2c3e50')
         operation_frame.pack(fill='x', pady=20)
-        
-        encrypt_btn = ttk.Button(operation_frame, text="🔒 Encrypt File", 
+    
+        encrypt_btn = ttk.Button(operation_frame, text="Encrypt File", 
                                command=self.encrypt_file, style='Custom.TButton')
         encrypt_btn.pack(side='left', padx=(0, 10), fill='x', expand=True)
         
-        decrypt_btn = ttk.Button(operation_frame, text="🔓 Decrypt File", 
+        decrypt_btn = ttk.Button(operation_frame, text="Decrypt File", 
                                command=self.decrypt_file, style='Custom.TButton')
         decrypt_btn.pack(side='right', padx=(10, 0), fill='x', expand=True)
         
@@ -222,15 +222,15 @@ class CyberPHEncryptor:
             key_preview = new_key.decode()[:16] + "..."
             self.key_display.config(text=f"Key: {key_preview}")
             
-            self.log_message("🔑 New encryption key generated successfully!")
-            self.log_message("⚠️ Remember to export and save your key securely.")
+            self.log_message("New encryption key generated successfully!")
+            self.log_message("Remember to export and save your key securely.")
             
             # Ask if user wants to save the key
             if messagebox.askyesno("Save Key", "Would you like to save this key to a file?"):
                 self.export_key()
                 
         except Exception as e:
-            self.log_message(f"❌ Key generation failed: {str(e)}")
+            self.log_message(f"Key generation failed: {str(e)}")
             messagebox.showerror("Error", f"Key generation failed: {str(e)}")
             
     def import_key(self):
@@ -257,13 +257,13 @@ class CyberPHEncryptor:
                 key_preview = key_data.decode()[:16] + "..."
                 self.key_display.config(text=f"Key: {key_preview}")
                 
-                self.log_message(f"🔑 Encryption key imported from: {os.path.basename(file_path)}")
+                self.log_message(f"Encryption key imported from: {os.path.basename(file_path)}")
                 
             except Exception:
                 raise ValueError("Invalid key format")
                 
         except Exception as e:
-            self.log_message(f"❌ Key import failed: {str(e)}")
+            self.log_message(f"Key import failed: {str(e)}")
             messagebox.showerror("Error", f"Key import failed: {str(e)}")
             
     def export_key(self):
@@ -299,12 +299,12 @@ class CyberPHEncryptor:
             with open(raw_key_path, 'wb') as f:
                 f.write(self.current_key)
                 
-            self.log_message(f"🔑 Key exported to: {os.path.basename(file_path)}")
-            self.log_message(f"🔑 Raw key saved to: {os.path.basename(raw_key_path)}")
+            self.log_message(f"Key exported to: {os.path.basename(file_path)}")
+            self.log_message(f"Raw key saved to: {os.path.basename(raw_key_path)}")
             messagebox.showinfo("Success", f"Key exported successfully!\n\nKey file: {os.path.basename(file_path)}\nRaw key: {os.path.basename(raw_key_path)}")
             
         except Exception as e:
-            self.log_message(f"❌ Key export failed: {str(e)}")
+            self.log_message(f"Key export failed: {str(e)}")
             messagebox.showerror("Error", f"Key export failed: {str(e)}")
         
     def encrypt_file(self):
